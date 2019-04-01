@@ -31,7 +31,7 @@ Open Terminal and go to `/usr/bin`. For example by typing `cd /usr/bin`. You wil
 
 Remove **codesign** utility by doing `sudo rm codesign`. Go ahead, you have already copied the original file to **codesign.orig**.
 
-Instead of a deleted file, create an empty codesign file. Using your favorite text editor, copy the proposed script. Don't forget to **sudo** when openng the file with your text editor `sudo emacs codesign`. 
+Instead of a deleted file, create an empty codesign file. Using your favorite text editor, copy the proposed [script](https://github.com/rodnoy/codesign/blob/master/codesign). Don't forget to **sudo** when opening the file with your text editor `sudo emacs codesign`. 
 
 ## Step four
 
