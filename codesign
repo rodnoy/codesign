@@ -1,0 +1,27 @@
+#!/bin/bash  
+# This wrapper around codesign ensures that only one codesign operation is  
+# running at the same time. When the signing is performed on a smart card  
+# (via OpenSC), it fails when concurrent processes request a signature.  
+  
+lockfile="/var/tmp/codesign-od-fix.lock"  
+pid=$$  
+while ! ln -s "$pid" "$lockfile" 2>/dev/null; do  
+    # first check whether lock-link is stale  
+    otherPID=$(readlink "$lockfile")  
+    if kill -0 "$otherPID" 2>/dev/null; then  
+        # PID still exists, wait...  
+        sleep 0.1  
+    else  
+        # lock is stale, PID does not exist any more  
+        rm -f "$lockfile" 2>/dev/null  
+    fi  
+done  
+# We now hold the lock  
+  
+/usr/bin/codesign.orig "$@"  
+rval=$?  
+  
+# remove lock  
+rm -f "$lockfile" 2>/dev/null  
+  
+exit "$rval"  
