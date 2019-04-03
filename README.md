@@ -16,7 +16,7 @@ Here are the step-by-step instructions on how to do this:
 ## Step one  
 You need to temporarily disable System Integrity Protection. We need that to copy /usr/bin/codesign file to /usr/bin/codesign.orig and change it's rights.
 
-Restart your mac and keep holding `Ctr+R` to enter to recovery mode, then select in the top menu **Utilities** and then **Terminal**.
+Restart your mac and keep holding `CMD+R` to enter to recovery mode, then select in the top menu **Utilities** and then **Terminal**.
 
 Type terminal command : `csrutil disable`.
 Reboot you computer again.
@@ -35,7 +35,7 @@ Instead of a deleted file, create an empty codesign file. Using your favorite te
 
 ## Step four
 
-We should make executable the created file. To check its current permissions you can type something like `ls -l codesign`. And the add `-rwxr-xr-x` by doing sudo `chmod 751 codesing`.
+We should make executable the created file. To check its current permissions you can type something like `ls -l codesign`. And the add `-rwxr-xr-x` by doing sudo `chmod 755 codesing`.
 
 If you want read more about how to set file permission here is a good [atricle ](http://www.macinstruct.com/node/415). 
 
